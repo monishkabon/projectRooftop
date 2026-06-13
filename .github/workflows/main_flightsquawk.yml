@@ -57,6 +57,5 @@ jobs:
         with:
           app-name: 'flightsquawk'
           slot-name: 'Production'
-          # Make sure this secret exists in your GitHub repository secrets
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
