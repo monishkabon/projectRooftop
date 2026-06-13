@@ -1,0 +1,110 @@
+/* Shared styles for MilitaryOps and CivilianTraffic pages */
+
+.list-page {
+  border: 1px solid var(--primary);
+  background: rgba(0, 24, 1, 0.5);
+  padding: var(--sp-lg);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  box-shadow: inset 0 0 20px rgba(51, 255, 51, 0.05);
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  flex-grow: 1;
+}
+
+.list-page__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden; /* Keep footer fixed at bottom */
+}
+
+.list-page__heading {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.list-page__entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: var(--sp-xs);
+}
+
+/* Custom Scrollbar for Terminal Aesthetic */
+.list-page__entries::-webkit-scrollbar {
+  width: 6px;
+}
+.list-page__entries::-webkit-scrollbar-track {
+  background: rgba(0, 24, 1, 0.8);
+  border-left: 1px solid rgba(51, 255, 51, 0.1);
+}
+.list-page__entries::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  opacity: 0.5;
+}
+.list-page__entries::-webkit-scrollbar-thumb:hover {
+  background: #66ff66;
+}
+
+/* ─── Search Footer ─── */
+
+.list-page__search-footer {
+  flex-shrink: 0;
+  border-top: 1px solid rgba(51, 255, 51, 0.3);
+  padding-top: var(--sp-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  margin-top: auto;
+}
+
+.list-page__search-prompt {
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.list-page__search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  caret-color: var(--primary);
+}
+
+.list-page__search-input::placeholder {
+  color: rgba(51, 255, 51, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.list-page__search-input:focus {
+  text-shadow: 0 0 6px rgba(51, 255, 51, 0.4);
+}
+
+.list-page__search-meta {
+  color: rgba(51, 255, 51, 0.5);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.list-page__search-meta--active {
+  color: var(--primary);
+}

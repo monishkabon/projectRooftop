@@ -1,0 +1,108 @@
+.squawk-entry {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.squawk-entry:hover {
+  border-left-color: var(--primary);
+}
+
+/* Header button */
+.squawk-entry__header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-xs);
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+  width: 100%;
+}
+
+.squawk-entry__header:hover {
+  background: rgba(51, 255, 51, 0.05);
+}
+
+.squawk-entry__arrow {
+  color: var(--primary);
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.squawk-entry__info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  text-transform: uppercase;
+}
+
+.squawk-entry__code {
+  color: var(--warning-red);
+  font-weight: 700;
+}
+
+.squawk-entry__callsign {
+  color: rgba(51, 255, 51, 0.9);
+}
+
+.squawk-entry__type {
+  color: rgba(51, 255, 51, 0.9);
+  margin-left: var(--sp-sm);
+}
+
+.squawk-entry__chevron {
+  color: var(--primary);
+}
+
+/* Details panel */
+.squawk-entry__details {
+  background: rgba(51, 255, 51, 0.05);
+  border-top: 1px solid rgba(51, 255, 51, 0.2);
+  padding: var(--sp-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+  color: rgba(51, 255, 51, 0.8);
+}
+
+.squawk-entry__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.squawk-entry__status {
+  color: var(--on-surface-variant);
+  margin-top: var(--sp-xs);
+}
+
+.squawk-entry__track-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-sm);
+  padding: var(--sp-xs) var(--sp-sm);
+  border: 1px solid rgba(51, 255, 51, 0.3);
+  background: rgba(51, 255, 51, 0.05);
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.squawk-entry__track-btn:hover {
+  background: rgba(51, 255, 51, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.3);
+  text-shadow: 0 0 6px rgba(51, 255, 51, 0.5);
+}

@@ -1,0 +1,214 @@
+/* ============================================================
+   TACTICAL MATRIX — Design System (Vanilla CSS)
+   ============================================================ */
+
+/* ---------- CSS Custom Properties (Design Tokens) ---------- */
+:root {
+  /* Colors */
+  --surface: #001801;
+  --surface-dim: #001801;
+  --surface-bright: #0e4311;
+  --surface-container-lowest: #001201;
+  --surface-container-low: #002203;
+  --surface-container: #002603;
+  --surface-container-high: #1a4d1a;
+  --surface-container-highest: #083e0c;
+  --on-surface: #b7f1ac;
+  --on-surface-variant: #baccb1;
+  --inverse-surface: #b7f1ac;
+  --inverse-on-surface: #023908;
+  --outline: #85967d;
+  --outline-variant: #3c4b36;
+  --surface-tint: #00e61b;
+
+  --primary: #33ff33;
+  --on-primary: #003a02;
+  --primary-container: #33ff33;
+  --on-primary-container: #007207;
+  --inverse-primary: #006e06;
+
+  --secondary: #d3fbff;
+  --on-secondary: #00363a;
+  --secondary-container: #00eefc;
+  --on-secondary-container: #00686f;
+
+  --tertiary: #fff8f7;
+  --on-tertiary: #680009;
+  --tertiary-container: #ffd3cf;
+  --on-tertiary-container: #c21120;
+
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  --warning-red: #ff4444;
+
+  --background: #001801;
+  --on-background: #b7f1ac;
+  --surface-variant: #083e0c;
+
+  /* Spacing (4px grid) */
+  --sp-unit: 4px;
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 48px;
+  --sp-gutter: 1px;
+  --sp-margin-safe: 32px;
+
+  /* Typography */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-label: 'Space Mono', monospace;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+/* ---------- Typography Classes ---------- */
+.text-display-lg {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-md {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+.text-headline-sm {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+.text-body-lg {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-body-md {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-label-caps {
+  font-family: var(--font-label);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.text-code-sm {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ---------- Effect Classes ---------- */
+.glow-text {
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
+}
+
+.glow-border {
+  box-shadow: 0 0 8px rgba(51, 255, 51, 0.5);
+}
+
+.text-glow-error {
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+}
+
+/* ---------- Animations ---------- */
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+.blink {
+  animation: blinker 0.5s step-start infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ---------- Scanline Overlay ---------- */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(51, 255, 51, 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 100% 4px;
+  z-index: 0;
+}
+
+/* ---------- Material Icons inline helper ---------- */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-container-low);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
