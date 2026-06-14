@@ -66,8 +66,9 @@ varying vec2 v_texCoord;
 
 void main() {
     vec2 uv = v_texCoord;
-    vec2 p = (uv - 0.5);
-    p.x *= u_resolution.x / u_resolution.y;
+    float vmin = min(u_resolution.x, u_resolution.y);
+    float targetSize = min(vmin * 0.9, 800.0);
+    vec2 p = (uv - 0.5) * u_resolution * (0.9 / targetSize);
 
     float dist = length(p);
     float angle = atan(p.y, p.x);
