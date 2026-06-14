@@ -108,3 +108,19 @@
 .list-page__search-meta--active {
   color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  .list-page {
+    padding: var(--sp-sm);
+    min-height: 400px;
+    gap: var(--sp-sm);
+  }
+
+  .list-page__inner {
+    gap: var(--sp-sm);
+  }
+
+  .list-page__search-footer {
+    flex-wrap: wrap;
+  }
+}

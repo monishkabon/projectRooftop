@@ -30,3 +30,17 @@
   box-shadow: 0 0 8px rgba(51, 255, 51, 0.5);
   cursor: default;
 }
+
+@media (max-width: 768px) {
+  .tab-nav {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px; /* for scrollbar spacing */
+  }
+
+  .tab-nav__link {
+    padding: var(--sp-xs) var(--sp-sm);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}

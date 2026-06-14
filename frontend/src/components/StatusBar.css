@@ -21,3 +21,16 @@
   gap: var(--sp-sm);
   color: var(--primary);
 }
+
+@media (max-width: 768px) {
+  .status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-xs);
+  }
+
+  .status-bar__right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

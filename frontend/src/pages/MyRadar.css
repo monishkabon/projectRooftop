@@ -222,3 +222,25 @@
   box-shadow: 0 0 14px rgba(51, 255, 51, 0.4);
   text-shadow: 0 0 8px rgba(51, 255, 51, 0.6);
 }
+
+@media (max-width: 768px) {
+  .radar-page {
+    min-height: 400px;
+  }
+
+  .flight-details-popup {
+    width: 90vw;
+    min-width: auto;
+    max-width: 400px;
+    padding: var(--sp-md);
+  }
+
+  .flight-details-popup__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-xs);
+  }
+
+  .flight-details-popup__label {
+    margin-top: var(--sp-xs);
+  }
+}

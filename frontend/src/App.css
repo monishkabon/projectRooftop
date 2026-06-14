@@ -17,3 +17,9 @@
   height: 100vh;
   max-height: 100vh;
 }
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: var(--sp-md);
+  }
+}
