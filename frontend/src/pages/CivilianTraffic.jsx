@@ -3,7 +3,7 @@ import StatusBar from '../components/StatusBar';
 import SquawkEntry from '../components/SquawkEntry';
 import './ListPage.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = '';
 const POLL_INTERVAL = 5000;
 const SEARCH_DEBOUNCE = 300;
 

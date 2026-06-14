@@ -3,7 +3,7 @@ import StatusBar from '../components/StatusBar';
 import CornerBrackets from '../components/CornerBrackets';
 import './MyRadar.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = '';
 const POLL_INTERVAL = 5000;
 
 /* ---------- Dynamic Range Tuning ---------- */
