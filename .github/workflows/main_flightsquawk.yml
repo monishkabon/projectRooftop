@@ -18,10 +18,18 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: npm install
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          
+      - name: Prepare backend
         run: |
           cd backend
           npm install
+          mkdir -p public
+          cp -a ../frontend/dist/. public/
           
       - name: Zip artifact for deployment
         # Zipping the backend folder contents specifically since the Node server lives there
