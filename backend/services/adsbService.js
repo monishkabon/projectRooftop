@@ -202,17 +202,18 @@ async function persistSquawkEvents(rawAircraft) {
 /**
  * Start polling all feeds. Default interval is 5 seconds.
  */
-export function startPolling(intervalMs) {
-  const interval = intervalMs || parseInt(process.env.POLL_INTERVAL_MS, 10) || 5000;
-  console.log(`[ADSB] Starting polling with ${interval}ms interval`);
+export function startPolling() {
+  const milInterval = parseInt(process.env.MILITARY_POLL_INTERVAL_MS, 10) || 7000;
+  const civInterval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 15000;
+  console.log(`[ADSB] Starting polling. Military: ${milInterval}ms, Civilian/Squawks: ${civInterval}ms`);
 
   // Fetch immediately on boot
   fetchMilitary();
   fetchSquawks();
 
   // Set up recurring polls for military + squawks
-  pollingTimers.military = setInterval(fetchMilitary, interval);
-  pollingTimers.squawks = setInterval(fetchSquawks, interval);
+  pollingTimers.military = setInterval(fetchMilitary, milInterval);
+  pollingTimers.squawks = setInterval(fetchSquawks, civInterval);
 
   // Local radar only polls once params are known (first request sets them)
 }
@@ -221,7 +222,7 @@ export function startPolling(intervalMs) {
  * Start or restart local radar polling with the given coordinates.
  */
 export async function startLocalRadarPolling(lat, lon, dist) {
-  const interval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 5000;
+  const interval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 15000;
   localRadarParams = { lat, lon, dist };
 
   // Clear any existing timer
@@ -235,7 +236,7 @@ export async function startLocalRadarPolling(lat, lon, dist) {
     fetchLocalRadar(lat, lon, dist);
   }, interval);
 
-  console.log(`[ADSB] Local radar polling started for ${lat},${lon} r=${dist}nm`);
+  console.log(`[ADSB] Local radar polling started for ${lat},${lon} r=${dist}nm at ${interval}ms`);
 }
 
 /**
