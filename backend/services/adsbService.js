@@ -30,7 +30,7 @@ const ENDPOINTS = {
 };
 
 const axiosClient = axios.create({
-  timeout: 10000,
+  timeout: 25000,
   headers: {
     'Accept-Encoding': 'gzip',
     'Accept': 'application/json',
@@ -69,9 +69,17 @@ let pollingTimers = {
 
 let localRadarParams = null; // set by first /api/radar request
 
+let isFetching = {
+  military: false,
+  squawks: false,
+  localRadar: false,
+};
+
 // ─── Fetch + Transform Functions ────────────────────────────────────
 
 async function fetchMilitary() {
+  if (isFetching.military) return;
+  isFetching.military = true;
   try {
     const res = await axiosClient.get(ENDPOINTS.military);
     const aircraft = res.data?.ac || [];
@@ -82,10 +90,14 @@ async function fetchMilitary() {
   } catch (err) {
     console.error('[ADSB] Military feed error:', err.message);
     // Stale cache is preserved on error
+  } finally {
+    isFetching.military = false;
   }
 }
 
 async function fetchSquawks() {
+  if (isFetching.squawks) return;
+  isFetching.squawks = true;
   try {
     const res = await axiosClient.get(ENDPOINTS.squawks);
     const aircraft = res.data?.ac || [];
@@ -116,10 +128,14 @@ async function fetchSquawks() {
     }
   } catch (err) {
     console.error('[ADSB] Squawk feed error:', err.message);
+  } finally {
+    isFetching.squawks = false;
   }
 }
 
 async function fetchLocalRadar(lat, lon, dist) {
+  if (isFetching.localRadar) return;
+  isFetching.localRadar = true;
   try {
     const url = `${BASE_URL}/lat/${lat}/lon/${lon}/dist/${dist}`;
     const res = await axiosClient.get(url);
@@ -131,6 +147,8 @@ async function fetchLocalRadar(lat, lon, dist) {
     console.log(`[ADSB] Local radar updated — ${aircraft.length} aircraft within ${dist}nm of ${lat},${lon}`);
   } catch (err) {
     console.error('[ADSB] Local radar error:', err.message);
+  } finally {
+    isFetching.localRadar = false;
   }
 }
 
