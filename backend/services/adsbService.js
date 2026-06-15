@@ -221,8 +221,8 @@ async function persistSquawkEvents(rawAircraft) {
  * Start polling all feeds. Default interval is 5 seconds.
  */
 export function startPolling() {
-  const milInterval = parseInt(process.env.MILITARY_POLL_INTERVAL_MS, 10) || 7000;
-  const civInterval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 15000;
+  const milInterval = parseInt(process.env.MILITARY_POLL_INTERVAL_MS, 10) || 30000;
+  const civInterval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 60000;
   console.log(`[ADSB] Starting polling. Military: ${milInterval}ms, Civilian/Squawks: ${civInterval}ms`);
 
   // Fetch immediately on boot
@@ -240,7 +240,7 @@ export function startPolling() {
  * Start or restart local radar polling with the given coordinates.
  */
 export async function startLocalRadarPolling(lat, lon, dist) {
-  const interval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 15000;
+  const interval = parseInt(process.env.POLL_INTERVAL_MS, 10) || 60000;
   localRadarParams = { lat, lon, dist };
 
   // Clear any existing timer
